@@ -1,0 +1,15 @@
+afrinic|*|asn|*|3326|summary
+afrinic|*|ipv4|*|4291|summary
+afrinic|*|ipv6|*|4096|summary
+apnic|*|asn|*|10989|summary
+apnic|*|ipv4|*|47206|summary
+apnic|*|ipv6|*|78757|summary
+arin|*|asn|*|28913|summary
+arin|*|ipv4|*|66869|summary
+arin|*|ipv6|*|61854|summary
+lacnic|*|ipv4|*|18958|summary
+lacnic|*|ipv6|*|46275|summary
+lacnic|*|asn|*|12606|summary
+ripencc|*|ipv4|*|83879|summary
+ripencc|*|asn|*|42529|summary
+ripencc|*|ipv6|*|93154|summary

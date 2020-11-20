@@ -14,20 +14,20 @@ def split_uri(uri):
 
     parsed_uri = urlparse(uri)
 
-    return [parsed_uri.scheme,
-            parsed_uri.netloc,
-            parsed_uri.path]
+    return {'proto': parsed_uri.scheme,
+            'host': parsed_uri.netloc,
+            'path': parsed_uri.path}
 
 
 def download(uri):
 
     splited_uri = split_uri(uri)
 
-    with FTP(splited_uri[1]) as ftp:
+    with FTP(splited_uri['host']) as ftp:
         ftp.login()
 
-        with open(splited_uri[1], 'wb') as fp:
-            ftp.retrbinary(f"RETR {splited_uri[2]}", fp.write)
+        with open(splited_uri['host'], 'wb') as fp:
+            ftp.retrbinary(f"RETR {splited_uri['path']}", fp.write)
 
             ftp.quit()
 
