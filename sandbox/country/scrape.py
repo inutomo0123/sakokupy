@@ -38,13 +38,6 @@ def row(td):
             td[0].get_text().strip(),
             td[5].get_text()]
 
-
-
-
-
-
-
-
 pp(list(map(lambda x:
          row(x.select('td')),
          list(filter(lambda tr_ch: len(tr_ch.select('td')) == 7, tr))
