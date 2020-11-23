@@ -1,7 +1,7 @@
 from ftplib import FTP
 from urllib.parse import urlparse
 
-uris = [
+URIS = [
     'ftp://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest',
     'ftp://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-extended-latest',
     'ftp://ftp.apnic.net/pub/stats/apnic/delegated-apnic-extended-latest',
@@ -11,6 +11,8 @@ uris = [
 
 
 def split_uri(uri):
+    ''' uriをプロトコル、ホスト、パスに分割し、辞書を返す
+    '''
 
     parsed_uri = urlparse(uri)
 
@@ -20,18 +22,22 @@ def split_uri(uri):
 
 
 def download(uri):
+    ''' uriのファイルをダウンロードする
+    '''
 
     splited_uri = split_uri(uri)
 
     with FTP(splited_uri['host']) as ftp:
         ftp.login()
 
-        with open(splited_uri['host'], 'wb') as fp:
+        with open('/dev/stdout', 'wb') as fp:
             ftp.retrbinary(f"RETR {splited_uri['path']}", fp.write)
 
             ftp.quit()
 
 
-def download_all(urls):
+def download_all():
+    ''' すべてのファイルをダウンロードする
+    '''
 
-    list(map(lambda x: download(x), urls))
+    list(map(lambda x: download(x), URIS))
